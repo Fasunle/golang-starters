@@ -2,19 +2,12 @@
 
 This is a starter kit for golang projects. The aim of this project is to provide a starting point for golang projects. This increase the development speed as it reduces the setup time.
 
-It should be noted that this project is not a framework. It is a starter kit which utilize go-chi as a router and middleware. It setup http router by default on th e main branch but other variants can be access in the branches.
+It should be noted that this project is not a framework. It is a starter kit which utilize [Fiber](https://docs.gofiber.io/)  as a router and middleware. It setup http router by default on the `fiber` branch.
 
-For default setup, use the main branch as follows:
-
-```bash
-    git clone https://github.com/Fasunle/golang-starter-kit.git && rm -rf .git
-
-```
-
-For installations, other than the default, you just need to specify the target branch other than main:
+For installations:
 
 ```bash
-    git clone -b TARGET-BRANCH https://github.com/Fasunle/golang-starter-kit.git && rm -rf .git
+    git clone -b fiber https://github.com/Fasunle/golang-starter-kit.git && rm -rf .git
 
 ```
 
@@ -27,3 +20,25 @@ For installations, other than the default, you just need to specify the target b
 `cmd/routes/` - This is the folder where all the routes are stored.
 
 `cmd/api` - folder is specifically reserved for business logic.
+
+## Installing dependencies
+
+After cloning the project, install it dependencies by  running the following command:
+
+```bash
+    go mod tidy
+```
+
+## Running the application on your local machine
+
+Run the following command on your terminal:
+
+```bash
+    go run ./cmd/api
+```
+
+You application should be open on port http://localhost:80
+
+Check the route:
+
+http://localhost:80/api/v1

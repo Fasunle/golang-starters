@@ -1,7 +1,12 @@
 package handlers
 
-import "net/http"
+import (
+	"fmt"
+	"os"
 
-func HomeHandler(w http.ResponseWriter, r *http.Request) {
-	w.Write([]byte("Hello world from the golang starter"))
+	"github.com/gofiber/fiber/v3"
+)
+
+func HomeHandler(c fiber.Ctx) error {
+	return c.SendString(fmt.Sprintf("Hello world from the golang starter %d", os.Getpid()))
 }

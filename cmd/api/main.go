@@ -2,10 +2,11 @@ package main
 
 import (
 	"fmt"
-	"net/http"
 	"os"
+	"time"
 
 	"github.com/Fasunle/golang-starters.git/cmd/routes"
+	"github.com/gofiber/fiber/v3"
 )
 
 type Config struct{}
@@ -18,24 +19,18 @@ func main() {
 
 // start and serve http server
 func (app *Config) serve() {
-	server := &http.Server{
-		Addr:    fmt.Sprintf(":%s", getPort()),
-		Handler: routes.New(),
-	}
+	addr := fmt.Sprintf(":%s", getPort())
 
-	defer server.Close()
+	server := fiber.New(appConfig)
 
-	server.RegisterOnShutdown(func() {
-		fmt.Println("Server is shutting down...")
+	// register all routes
+	routes.New(server)
+
+	server.Listen(addr, fiber.ListenConfig{
+		EnablePrefork: true,
 	})
 
-	fmt.Println("Server started on port", getPort())
-
-	err := server.ListenAndServe()
-
-	if err != nil {
-		panic(err)
-	}
+	defer server.ShutdownWithTimeout(10 * time.Second)
 }
 
 // use the set port in env or default to 80

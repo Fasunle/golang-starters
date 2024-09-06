@@ -2,9 +2,9 @@ package routes
 
 import (
 	"github.com/Fasunle/golang-starters.git/cmd/handlers"
-	"github.com/go-chi/chi/v5"
+	fiber "github.com/gofiber/fiber/v3"
 )
 
-func appRoutes(r *chi.Mux) {
-	r.Get("/", handlers.HomeHandler)
+func appRoutes(app *fiber.App) {
+	app.Get("/api/v1", handlers.HomeHandler)
 }
