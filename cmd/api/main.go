@@ -27,7 +27,8 @@ func (app *Config) serve() {
 	routes.New(server)
 
 	server.Listen(addr, fiber.ListenConfig{
-		EnablePrefork: true,
+		EnablePrefork: false, // set to true if you want to use multiple cores
+		// TODO: research how to run multiple processes in a docker instance
 	})
 
 	defer server.ShutdownWithTimeout(10 * time.Second)
