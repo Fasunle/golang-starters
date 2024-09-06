@@ -7,7 +7,7 @@ It should be noted that this project is not a framework. It is a starter kit whi
 For installations:
 
 ```bash
-    git clone -b fiber https://github.com/Fasunle/golang-starter-kit.git && rm -rf .git
+    git clone -b fiber https://github.com/Fasunle/golang-starters.git && rm -rf .git
 
 ```
 
